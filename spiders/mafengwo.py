@@ -9,7 +9,7 @@ class MaFengWoSpider(object):
 
     def __init__(self, city):
         self.city = city
-        self.url_pattern = "http://www.mafengwo.cn/search/s.php?q=" + city + "&p={}&t=poi&kt=1"
+        self.url_pattern = "http://www.mafengwo.cn/search/s.php?q=" + city + "&p={}&t=pois&kt=1"
         self.headers = {
             "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/75.0.3770.90 Safari/537.36"
         }
@@ -54,7 +54,7 @@ class MaFengWoSpider(object):
             # 获取点评数量  点评(500)
             comments_num = li.xpath('./div/div[2]/ul/li[2]/a/text()')[0]
             # 提取点评中的数
-            item['comments_num'] = int(re.findall(r'点评\((\d+)\)', comments_num)[0])
+            item['comments_num'] = int(re.findall(r'蜂评\((\d+)\)', comments_num)[0])
             # print(comments_num)
             # 获取游记数量 游记(50)
             travel_notes_num = li.xpath('./div/div[2]/ul/li[3]/a/text()')[0]
